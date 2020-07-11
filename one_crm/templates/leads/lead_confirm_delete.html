@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>是否删除线索  "{{ object }}"?</p>
+    <input type="submit" value="确定">
+</form>
+{% endblock content %}

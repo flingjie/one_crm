@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+    <p class="lead"> {{ object.name }}</p>
+    <hr class="my-4">
+    <p>职称: {{ object.title }}</p>
+    <p>联系方式: {{ object.contact }}</p>
+    <p>邮箱: {{ object.email }}</p>
+    <p>描述: {{ object.description }}</p>
+    <p>附件: <a href="{{ object.attachment.url }}" target="_blank">文件地址</a></p>
+    <a class="btn btn-primary btn-lg" href="{% url 'leads:lead-delete' lead.pk %}" role="button">删除</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'leads:lead-list' %}" role="button" style="float:right">返回列表</a>
+  </div>
+{% endblock content %}

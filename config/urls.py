@@ -16,6 +16,7 @@ urlpatterns = [
     path("users/", include("one_crm.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path("leads/", include("one_crm.leads.urls", namespace="leads")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

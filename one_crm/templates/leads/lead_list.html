@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h5>线索列表</h5>
+  <div class="text-right">
+    <a href="{% url 'leads:lead-add' %}" class="btn btn-primary">新建</a>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">名字</th>
+        <th scope="col">职位</th>
+        <th scope="col">联系方式</th>
+        <th scope="col">邮箱</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for lead in object_list %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ lead.name }}</td>
+        <td>{{ lead.title }}</td>
+        <td>{{ lead.contact }}</td>
+        <td>{{ lead.email }}</td>
+        <td><a href="{% url 'leads:lead-detail' pk=lead.pk %}">详情</a></td>
+        <td><a href="{% url 'leads:lead-delete' pk=lead.pk %}">删除</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
