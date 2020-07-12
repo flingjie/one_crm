@@ -13,14 +13,20 @@ import jieba.posseg as pseg
 
 
 def isname(single_word_string):
+    """
+        判断是否是人名
+    """
     pair_word_list = pseg.lcut(single_word_string)
-    for eve_word, cixing in pair_word_list:
+    for _, cixing in pair_word_list:
         if cixing == "nr":
             return True
     return False
 
 
 def extract_name(s):
+    """
+        提取人名
+    """
     name = "未知"
     data = s.split("\n")
     for i in data:
