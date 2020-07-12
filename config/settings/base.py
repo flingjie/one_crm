@@ -76,6 +76,7 @@ LOCAL_APPS = [
     "one_crm.users.apps.UsersConfig",
     # Your stuff: custom apps go here
     "one_crm.leads.apps.LeadsConfig",
+    "one_crm.img2text.apps.Img2TextConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

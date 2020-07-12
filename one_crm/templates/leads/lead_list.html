@@ -3,6 +3,7 @@
 {% block content %}
   <h5>线索列表</h5>
   <div class="text-right">
+    <a href="{% url 'img2text:card' %}" class="btn btn-primary">名片导入</a>
     <a href="{% url 'leads:lead-add' %}" class="btn btn-primary">新建</a>
   </div>
   <table class="table table-striped">

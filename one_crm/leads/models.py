@@ -12,9 +12,9 @@ from django.db.models import (  # isort:skip
 
 class Lead(models.Model):
     name = CharField("名字", max_length=255)
-    title = CharField("职称", max_length=255)
+    title = CharField("职称", max_length=255, blank=True)
     contact = CharField("联系方式", max_length=255, blank=True)
-    email = EmailField("邮箱")
+    email = EmailField("邮箱", blank=True)
     description = TextField("描述", blank=True)
     attachment = FileField("附件", upload_to="upload", blank=True)
     create_time = DateTimeField("创建时间", auto_now_add=True)
