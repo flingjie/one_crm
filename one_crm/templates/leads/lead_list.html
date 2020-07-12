@@ -16,6 +16,7 @@
         <th scope="col">邮箱</th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
         <td>{{ lead.contact }}</td>
         <td>{{ lead.email }}</td>
         <td><a href="{% url 'leads:lead-detail' pk=lead.pk %}">详情</a></td>
+        <td><a href="{% url 'leads:lead-update' pk=lead.pk %}">更新</a></td>
         <td><a href="{% url 'leads:lead-delete' pk=lead.pk %}">删除</a></td>
       </tr>
      {% endfor %}
