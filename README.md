@@ -8,4 +8,8 @@
 
 [用Python打造一个CRM系统(四)](https://mp.weixin.qq.com/s/L-xTQs8em8NK7KdVDSt2Fw)
 
+[用Python打造一个CRM系统(五)](https://mp.weixin.qq.com/s/cmUuZ9qlVzcG3u4aa7TeZA)
+
+[用Python打造一个CRM系统(六)](https://mp.weixin.qq.com/s/v1UCQFDFfU4hHYGZ4eFMIg)
+
 ![fun_of_python.png](fun_of_python.png)
