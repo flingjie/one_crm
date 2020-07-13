@@ -40,9 +40,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///my_awesome_project")
-}
+DATABASES = {"default": env.db("DATABASE_URL", default="postgres:///one_crm")}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -77,6 +75,7 @@ LOCAL_APPS = [
     # Your stuff: custom apps go here
     "one_crm.leads.apps.LeadsConfig",
     "one_crm.img2text.apps.Img2TextConfig",
+    "one_crm.chatbot.apps.ChatbotConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

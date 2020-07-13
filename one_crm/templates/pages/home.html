@@ -1,1 +1,75 @@
 {% extends "base.html" %}
+
+{% block content %}
+<link href="https://unpkg.com/botui/build/botui.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://unpkg.com/botui/build/botui-theme-default.css" rel="stylesheet" crossorigin="anonymous">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/vue/latest/vue.min.js" crossorigin></script>
+<script type="text/javascript" src="https://unpkg.com/botui/build/botui.min.js" crossorigin></script>
+<div id="app">
+  <h5>🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖🤖</h5>
+  <div id="crm-bot">
+    <bot-ui></bot-ui>
+  </div>
+  <div class="input-group mb-3">
+  <input v-model="user_input" type="text" class="form-control" placeholder="请输入..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" @click="onUserInput()">提交</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      user_input: "",
+      uibot: null,
+    },
+    created: function() {
+      this.initWebSocket();
+    },
+    destroyed() {
+      this.ws.close()
+    },
+    mounted:function(){
+        this.botui = new BotUI('crm-bot');
+        this.botui.message.add({
+          content: '你好!'
+        });
+    },
+    methods: {
+      initWebSocket(){ //初始化weosocket
+        const wsuri = "ws://127.0.0.1:8000";
+        this.ws = new WebSocket(wsuri);
+        this.ws.onmessage = this.websocketonmessage;
+        this.ws.onopen = this.websocketonopen;
+        this.ws.onerror = this.websocketonerror;
+        this.ws.onclose = this.websocketclose;
+      },
+      websocketonopen(){ //连接建立之后执行send方法发送数据
+        console.log("on open...")
+      },
+      websocketonerror(){//连接建立失败重连
+        this.initWebSocket();
+      },
+      websocketonmessage(e){ //数据接收
+        this.botui.message.add({
+          content: e.data,
+        });
+      },
+      websocketclose(e){  //关闭
+        console.log('断开连接',e);
+      },
+      onUserInput: function() {
+        var that = this;
+        this.botui.message.add({
+          content: that.user_input,
+          human: true
+        });
+        this.ws.send(that.user_input);
+        that.user_input = "";
+      }
+    }
+  })
+</script>
+{% endblock content %}

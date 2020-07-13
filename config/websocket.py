@@ -1,3 +1,6 @@
+from one_crm.chatbot.views import get_bot_response
+
+
 async def websocket_application(scope, receive, send):
     while True:
         event = await receive()
@@ -9,5 +12,6 @@ async def websocket_application(scope, receive, send):
             break
 
         if event["type"] == "websocket.receive":
-            if event["text"] == "ping":
-                await send({"type": "websocket.send", "text": "pong!"})
+            user_data = event["text"]
+            answer = await get_bot_response(user_data)
+            await send({"type": "websocket.send", "text": str(answer)})

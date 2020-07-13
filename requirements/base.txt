@@ -17,3 +17,5 @@ django-redis==4.12.1  # https://github.com/jazzband/django-redis
 # -------------------------------------------------------------------------------
 pytesseract==0.3.4
 jieba==0.42.1
+daphne==2.5.0
+ChatterBot==1.1.0a7
